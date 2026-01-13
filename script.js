@@ -5,7 +5,7 @@ let number = 16;
 /*  Grid element and child element parameters  */
 /***********************************************/
 
-let borderSize = 2;
+let borderSize = 1;
 let marginSize = 1;
 
 gridElement.style.padding = `${marginSize}px`;
@@ -19,8 +19,6 @@ for(let i = 0; i < number; i++){
         const box = document.createElement('div');
         let dimentions = ((gridElement.offsetWidth - (gridElement.offsetWidth - gridElement.clientWidth) - marginSize*2)) / number;
 
-        console.log((gridElement.offsetWidth - (gridElement.offsetWidth - gridElement.clientWidth)));
-
         box.style.width = `${dimentions - borderSize*2 - marginSize*2}px`;
         box.style.height = `${dimentions - borderSize*2 - marginSize*2}px`;
         box.style.margin = `${marginSize}px`;
@@ -28,9 +26,27 @@ for(let i = 0; i < number; i++){
 
         box.setAttribute("class", "box");
 
-        parent.appendChild(box);
+        box.addEventListener("mouseenter", () => mouseElementColistionEvent(box));
 
+        parent.appendChild(box);
     }
+}
+
+function mouseElementColistionEvent(element) {
+    if(element.style.backgroundColor === ''){
+        let colour = getRandomColour();
+        element.style.backgroundColor = colour;
+    }
+}
+
+function getRandomColour(){
+    let characters = '123456789ABCDEF';
+    let colour = '#';
+    for(let i = 0; i < 6; i++){
+        colour += characters[Math.floor(Math.random() * 16)];
+    }
+
+    return colour;
 }
 
 
