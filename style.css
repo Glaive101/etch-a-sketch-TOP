@@ -1,3 +1,13 @@
+/* colour palate
+Ethereal Ivory      #E4E4DE
+Sophisticated Sage  #C4C5BA
+Eerie Black         #1B1B1B
+Muted Moss          #595f39 */
+
+body {
+    background-color: #E4E4DE;
+}
+
 .page {
     display: flex;
     flex-direction: column;
@@ -19,6 +29,11 @@
 }
 
 #Heading {
+    color: #1B1B1B;
+    background-color: #595f39;
+    margin: 0px;
+    padding: 20px 200px;
+    border: 10px solid #1B1B1B;
     text-align: center;
     font-size: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -29,17 +44,25 @@
     height: 650px;
     /* display: flex; */
     /* flex-wrap: wrap; */
-    border: 5px solid blue;
+    border: 5px solid #1B1B1B;
     /* justify-content: space-around; */
 }
 
 #information {
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: grey;
-    margin: 5px;
+    color: #C4C5BA;
+    background-color: #1B1B1B;
+    border:10px solid #595f39;
+    padding: 50px 200px;
 }
 
 button {
-    margin: 20px;
+    margin: 25px;
+    padding: 10px 35px;
+    border: 5px solid #1B1B1B;
+    border-radius: 10px;
+    background-color: #595f39;
+    color: #E4E4DE;
+
 }
