@@ -5,42 +5,54 @@ let number = 16;
 /*  Grid element and child element parameters  */
 /***********************************************/
 
-let borderSize = 1;
-let marginSize = 1;
+let borderSize = 0;
+let marginSize = 0;
 
 gridElement.style.padding = `${marginSize}px`;
 
-for(let i = 0; i < number; i++){
-    const parent = document.createElement('div');
-    parent.setAttribute("class", "parent");
-    gridElement.appendChild(parent);
+generateGrid();
 
-    for(let j = 0; j < number; j++){
-        const box = document.createElement('div');
-        let dimentions = ((gridElement.offsetWidth - (gridElement.offsetWidth - gridElement.clientWidth) - marginSize*2)) / number;
+function generateGrid(){
 
-        box.style.width = `${dimentions - borderSize*2 - marginSize*2}px`;
-        box.style.height = `${dimentions - borderSize*2 - marginSize*2}px`;
-        box.style.margin = `${marginSize}px`;
-        box.style.borderWidth = `${borderSize}px`;
+    for(let i = 0; i < number; i++){
+        const parent = document.createElement('div');
+        parent.setAttribute("class", "parent");
+        gridElement.appendChild(parent);
 
-        box.setAttribute("class", "box");
+        for(let j = 0; j < number; j++){
+            const box = document.createElement('div');
+            let dimentions = ((gridElement.offsetWidth - (gridElement.offsetWidth - gridElement.clientWidth) - marginSize*2)) / number;
 
-        box.addEventListener("mouseenter", () => mouseElementColistionEvent(box));
+            box.style.width = `${dimentions - borderSize*2 - marginSize*2}px`;
+            box.style.height = `${dimentions - borderSize*2 - marginSize*2}px`;
+            box.style.margin = `${marginSize}px`;
+            box.style.borderWidth = `${borderSize}px`;
 
-        parent.appendChild(box);
+            box.setAttribute("class", "box");
+
+            box.addEventListener("mouseover", () => mouseElementColistionEvent(box));
+
+            parent.appendChild(box);
+        }
     }
 }
 
 function mouseElementColistionEvent(element) {
+    console.log("Event triggered!");
+    //console.log(element.style.backgroundColor);
     if(element.style.backgroundColor === ''){
         let colour = getRandomColour();
+        console.log("Colour: " + colour);
         element.style.backgroundColor = colour;
     }
 }
 
+/******************************************************************/
+/*  Fancy colour generating algorithm from Martin Leitner-Ankerl  */
+/******************************************************************/
+
 function getRandomColour(){
-    let characters = '123456789ABCDEF';
+    let characters = '0123456789ABCDEF';
     let colour = '#';
     for(let i = 0; i < 6; i++){
         colour += characters[Math.floor(Math.random() * 16)];
@@ -48,6 +60,10 @@ function getRandomColour(){
 
     return colour;
 }
+
+// function hsvToRgb(h, s, v) {
+//     h_i = (h * 6).toFixed(0);
+// }
 
 
 /*********************************************/
